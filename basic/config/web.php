@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'diavgeiainsights',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -13,6 +13,9 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
