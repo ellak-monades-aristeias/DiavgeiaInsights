@@ -2,50 +2,41 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'DiavgeiaInsights : Μονάδες Αριστείας ΕΛ/ΛΑΚ';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>DiavgeiaInsights</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Καλώς ήρθατε στην αρχική σελίδα της εφαρμογής DiavgeiaInsights.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p><a class="btn btn-lg btn-success" href="#"></a></p>
     </div>
 
     <div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Στόχος</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Η εφαρμογή που σχεδιάζουμε να υλοποιήσουμε (DiavgeiaInsight), θα προσπαθήσει να βελτιώσει την υπάρχουσα κατάσταση, παρέχοντας σε όλους τους χρήστες τη δυνατότητα να κάνουν μια σειρά από ερωτήματα  στα δεδομένα της Διαύγειας (κυρίως σε αποφάσεις Δαπανών)είτε προκαθορισμένα ή μέσω ενός πίνακα επιλογών με επιλογείς.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Που απευθύνεται</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Το προτεινόμενο έργο καλύπτει τον τομέα Δημόσια Διοίκηση-Τοπική Αυτοδιοίκηση των Θεματικών Περιοχών των Μονάδων Αριστείας και απευθύνεται πρακτικά σε όλους τους πολίτες που θέλουν να βρουν περισσότερες πληροφορίες για την Δημόσια Διοίκηση και τις αποφάσεις που τον αφορούν. </p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Συνεισφορά</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Το DiavgeiaInsights ξεκίνησε στα πλαίσια της Μονάδας Αριστείας ΕΛ/ΛΑΚ Ιωαννίνων, ενώ έχει επιλεχτεί για ενίσχυση
+                    έργου από την ΕΕΛ/ΛΑΚ. 
+                    Είναι ανοιχτού κώδικα και διατίθεται με βάση την άδεια EUPL. Μπορείτε να βρείτε τον κώδικα και να συνεισφέρετε στο project στο Github</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p><a class="btn btn-default" href="https://github.com/ellak-monades-aristeias/DiavgeiaInsights">DiavgeiaInsights @github &raquo;</a></p>
             </div>
         </div>
 

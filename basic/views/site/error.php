@@ -18,10 +18,10 @@ $this->title = $name;
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
+        Το παραπάνω σφάλμα συνέβη όσο ο διακομιστής Web επεξεργαζόταν το αίτημά σας.
     </p>
     <p>
-        Please contact us if you think this is a server error. Thank you.
+        Επικοινωνήστε με το διαχειριστή αν εξακολουθεί να εμφανίζεται το πρόβλημα. Σας ευχαριστούμε.
     </p>
 
 </div>
