@@ -40,6 +40,20 @@ $config = [
                 ],
             ],
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en',
+                    'fileMap' => [
+                            'app' => 'app.php',
+                            'app/error' => 'error.php',
+                            'yii' => 'yii.php',
+                    ],
+                ],
+            ],
+        ],        
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
