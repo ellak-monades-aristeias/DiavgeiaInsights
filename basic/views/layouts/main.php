@@ -36,9 +36,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Αρχική', 'url' => ['/site/index']],
+            ['label' => 'Αναζήτηση', 'url' => ['/site/search']],
+            ['label' => 'Οδηγίες', 'url' => ['/site/manual/'],  'visible' => !Yii::$app->user->isGuest ],	
+            ['label' => 'Διαχείριση', 'url' => ['/site/admin_panel/'],  'visible' => !Yii::$app->user->isGuest ],
+            ['label' => 'Σχετικά', 'url' => ['/site/about']],
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [
@@ -61,7 +63,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; ΜΑ/ΕΛΛΑΚ <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
