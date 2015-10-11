@@ -45,7 +45,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Λανθασμένο όνομα χρήστη ή κωδικός.');
+                $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
             }
         }
     }
@@ -74,5 +74,14 @@ class LoginForm extends Model
         }
 
         return $this->_user;
+    }
+    
+    public function attributeLabels()
+    {
+        return [
+                'username' => Yii::t('app', 'Username'),
+                'password' => Yii::t('app', 'Password'),
+                'rememberMe' => Yii::t('app', 'Rememberme'),
+            ];
     }
 }
