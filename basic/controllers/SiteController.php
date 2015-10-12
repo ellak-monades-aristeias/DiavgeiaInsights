@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Decisions;
 
 class SiteController extends Controller
 {
@@ -90,5 +91,22 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    /*00-00*/
+    public function actionAdmin_panel()
+    {
+        $model = new Decisions();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+
+        return $this->render('admin_panel', [
+            'model' => $model,
+        ]);
     }
 }
