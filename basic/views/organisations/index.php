@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use demogorgorn\ajax\AjaxSubmitButton;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\OrganisationsSearch */
@@ -14,9 +15,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a(Yii::t('app', 'Create Organisations'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php AjaxSubmitButton::begin([
+          'label' => 'Refresh',
+          'ajaxOptions' => [
+              'type'=>'POST',
+              'url'=>'index?r=organisations/refreshdata1',
+              /*'cache' => false,*/
+              'success' => new \yii\web\JsExpression('function(html){
+                  $("#output").html(html);
+                  }'),
+          ],
+          'options' => ['class' => 'btn btn-primary', 'type' => 'submit'],
+          ]);
+          AjaxSubmitButton::end();
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -28,13 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'uid',
             'label',
             'abbreviation',
-            'latinName',
+            //'latinName',
             'category',
             // 'organizationDomains',
             // 'status',
             // 'supervisorId',
             // 'supervisorLabel',
-            // 'website',
+            'website',
             // 'odeManagerEmail:email',
             // 'vatNumber',
             // 'fekNumber',
