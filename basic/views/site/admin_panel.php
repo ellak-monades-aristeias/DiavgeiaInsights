@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 use kartik\select2\Select2;
 use kartik\date\DatePicker;
 use app\models\Organisations;
@@ -75,15 +76,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]);        
         ?>
-                
-                <p>
-                    <?php
-                    $updateDate = Preferences::getRefreshDate();
-                    echo '<br><br><label class="control-label">Τελευταία Ενημέρωση: </label>';
-                    echo '<label class="control-label">'. $updateDate[0] . '</label>';
-                    ?>
-                </p>
-            </div>
+        <p>
+            <?php Pjax::begin(); ?>
+            <?= $response = "--" ?> 
+            <?= Html::a("Ενημέρωση Δεδομένων", ['site/refreshdata'], ['class' => 'btn btn-lg btn-primary']) ?>
+            <h1>It's: <?= $response ?></h1>
+            <?php Pjax::end(); ?>
+        </p>                
+            <p>
+                <?php
+                $updateDate = Preferences::getRefreshDate();
+                echo '<br><br><label class="control-label">Τελευταία Ενημέρωση: </label>';
+                echo '<label class="control-label">'. $updateDate[0] . '</label>';
+                ?>
+            </p>
+        </div>
         <div class="col-lg-7">
             <a target="_blank" href="http://diavgeia.gov.gr"><img src="../web/images/diavgeia_all_logo.png"></a>
         </div>

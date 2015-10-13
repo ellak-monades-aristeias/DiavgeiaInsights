@@ -9,6 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Decisions;
+use app\models\Preferences;
+
+require_once(__DIR__ . '/../vendor/opendata/opendata.php');
 
 class SiteController extends Controller
 {
@@ -108,5 +111,10 @@ class SiteController extends Controller
         return $this->render('admin_panel', [
             'model' => $model,
         ]);
+    }
+    
+    public function actionRefreshdata()
+    {
+        return $this->render('refreshdata');
     }
 }

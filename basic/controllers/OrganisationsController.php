@@ -108,9 +108,17 @@ class OrganisationsController extends Controller
 
     public function actionRefreshdata1()
     {
-        return $this->render('refreshdata1', [
-        ]);
+        //return $this->render('refreshdata1', [
+        //]);
+        
+        if(!isset($_POST['country_code']) || empty($_POST['country_code']))
+        return;
+
+            $code = $_POST['country_code'];
+            echo "Aaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        return $this->renderAjax('resultwidget', ['code' => '11111']);
     }
+
 
     /**
      * Deletes an existing Organisations model.
