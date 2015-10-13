@@ -8,7 +8,7 @@ use app\models\OrganisationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-require(__DIR__ . '/../vendor/opendata/opendata.php');
+require_once(__DIR__ . '/../vendor/opendata/opendata.php');
 
 /**
  * OrganisationsController implements the CRUD actions for Organisations model.

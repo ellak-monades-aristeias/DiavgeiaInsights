@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'issueDate',
             'decisionTypeId',
             'organizationId',
-            'privateData',
+            'url',
             'submissionTimestamp',
             'status',
             'versionId',

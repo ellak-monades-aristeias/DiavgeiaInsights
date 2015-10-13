@@ -50,7 +50,7 @@ class Decisions extends \yii\db\ActiveRecord
         return [
             [['ada'], 'required'],
             [['ada'], 'string', 'max' => 15],
-            [['protocolNumber', 'subject', 'issueDate', 'decisionTypeId', 'organizationId', 'privateData', 'submissionTimestamp', 'status', 'versionId', 'documentChecksum', 'correctedVersionId'], 'string', 'max' => 45]
+            [['protocolNumber', 'subject', 'issueDate', 'decisionTypeId', 'organizationId', 'submissionTimestamp', 'status', 'versionId', 'documentChecksum', 'correctedVersionId'], 'string', 'max' => 45]
         ];
     }
 
@@ -66,7 +66,6 @@ class Decisions extends \yii\db\ActiveRecord
             'issueDate' => Yii::t('app', 'Issue Date'),
             'decisionTypeId' => Yii::t('app', 'Decision Type ID'),
             'organizationId' => Yii::t('app', 'Organization ID'),
-            'privateData' => Yii::t('app', 'Private Data'),
             'submissionTimestamp' => Yii::t('app', 'Submission Timestamp'),
             'status' => Yii::t('app', 'Status'),
             'versionId' => Yii::t('app', 'Version ID'),

@@ -11,7 +11,7 @@ use app\models\Preferences;
 /* @var $this yii\web\View */
 /* @var $model app\models\Decisions */
 /* @var $form ActiveForm */
-require(__DIR__ . '/../../vendor/opendata/opendata.php');
+require_once(__DIR__ . '/../../vendor/opendata/opendata.php');
 
 $this->title = 'Πίνακας Ελέγχου';
 $this->params['breadcrumbs'][] = $this->title;
@@ -72,17 +72,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'separator' => '<i class="glyphicon glyphicon-resize-horizontal"></i>',
                 'pluginOptions' => [
                     'autoclose' => true,
-                    'format' => 'dd-mm-yyyy'
+                    'format' => 'yyyy-mm-dd'
                 ]
             ]);        
         ?>
         <p>
-            <?php Pjax::begin(); ?>
-            <?= $response = "--" ?> 
-            <?= Html::a("Ενημέρωση Δεδομένων", ['site/refreshdata'], ['class' => 'btn btn-lg btn-primary']) ?>
-            <h1>It's: <?= $response ?></h1>
-            <?php Pjax::end(); ?>
-        </p>                
+
+        </p>              
             <p>
                 <?php
                 $updateDate = Preferences::getRefreshDate();
