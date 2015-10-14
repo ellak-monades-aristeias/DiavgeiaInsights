@@ -38,6 +38,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Αρχική', 'url' => ['/site/index']],
             ['label' => 'Αναζήτηση', 'url' => ['/site/search']],
+            ['label' => 'Οργανισμοί', 'url' => ['/organisations/index/'],  'visible' => !Yii::$app->user->isGuest ],
             ['label' => 'Οδηγίες', 'url' => ['/site/manual/'],  'visible' => !Yii::$app->user->isGuest ],	
             ['label' => 'Διαχείριση', 'url' => ['/site/admin_panel/'],  'visible' => !Yii::$app->user->isGuest ],
             ['label' => 'Σχετικά', 'url' => ['/site/about']],

@@ -69,4 +69,16 @@ class Organisations extends \yii\db\ActiveRecord
             'fekIssue' => Yii::t('app', 'Fek Issue'),
         ];
     }
+    
+    public function getOrganisations() {
+        return Organisations::findBySql("SELECT uid, label FROM organisations");
+    }
+    
+    public static function dropdown() {
+            $models = static::find()->all();
+            foreach ($models as $model) {
+                    $dropdown[$model->uid] = $model->label;
+            }
+            return $dropdown;
+    }
 }

@@ -15,8 +15,8 @@ class ApiResponse {
 
 class OpendataClient {    
     public function __construct() {
-        $this->baseUrl = 'https://test3.diavgeia.gov.gr/luminapi/opendata';
-        //$this->baseUrl = 'https://diavgeia.gov.gr/opendata';
+        //$this->baseUrl = 'https://test3.diavgeia.gov.gr/luminapi/opendata';
+        $this->baseUrl = 'https://diavgeia.gov.gr/opendata';
         $this->resetAuth();
     }
     

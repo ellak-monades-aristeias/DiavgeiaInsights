@@ -18,7 +18,7 @@ class DecisionsSearch extends Decisions
     public function rules()
     {
         return [
-            [['ada', 'protocolNumber', 'subject', 'issueDate', 'decisionTypeId', 'organizationId', 'privateData', 'submissionTimestamp', 'status', 'versionId', 'documentChecksum', 'correctedVersionId'], 'safe'],
+            [['ada', 'protocolNumber', 'subject', 'issueDate', 'decisionTypeId', 'organizationId', 'submissionTimestamp', 'status', 'versionId', 'documentChecksum', 'correctedVersionId'], 'safe'],
         ];
     }
 
@@ -60,7 +60,6 @@ class DecisionsSearch extends Decisions
             ->andFilterWhere(['like', 'issueDate', $this->issueDate])
             ->andFilterWhere(['like', 'decisionTypeId', $this->decisionTypeId])
             ->andFilterWhere(['like', 'organizationId', $this->organizationId])
-            ->andFilterWhere(['like', 'privateData', $this->privateData])
             ->andFilterWhere(['like', 'submissionTimestamp', $this->submissionTimestamp])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'versionId', $this->versionId])

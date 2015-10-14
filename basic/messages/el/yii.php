@@ -18,9 +18,7 @@
  */
 return [
     'Incorrect username or password.' => 'Λάθος όνομα χρήστη ή κωδικός.',
-    'Ec Doctors' => 'Ιατροί',
-    'Create Ec Doctor' => 'Νέος Ιατρός',
-    'Appointments' => 'Ραντεβού',	
+
     'Are you sure you want to delete this item?' => 'Είστε σίγουροι για τη διαγραφή του αντικειμένου;',
     'Only files with these MIME types are allowed: {mimeTypes}.' => 'Επιτρέπονται μόνο αρχεία με τους ακόλουθους τύπους MIME: {mimeTypes}.',
     'The requested view "{name}" was not found.' => 'Δε βρέθηκε η αιτούμενη όψη "{name}".',

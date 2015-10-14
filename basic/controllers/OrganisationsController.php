@@ -8,6 +8,7 @@ use app\models\OrganisationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+require_once(__DIR__ . '/../vendor/opendata/opendata.php');
 
 /**
  * OrganisationsController implements the CRUD actions for Organisations model.
@@ -89,6 +90,35 @@ class OrganisationsController extends Controller
             ]);
         }
     }
+    
+    public function actionRefreshata($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->uid]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+        
+    }
+    
+
+    public function actionRefreshdata1()
+    {
+        //return $this->render('refreshdata1', [
+        //]);
+        
+        if(!isset($_POST['country_code']) || empty($_POST['country_code']))
+        return;
+
+            $code = $_POST['country_code'];
+            echo "Aaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        return $this->renderAjax('resultwidget', ['code' => '11111']);
+    }
+
 
     /**
      * Deletes an existing Organisations model.
