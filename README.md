@@ -32,9 +32,9 @@
 
 | **Παραδοτέο**                                                        | **URL**                                                                  |
 |----------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Ανάλυση απαιτήσεων- Σχεδιασμός βάσης - Σχεδιασμός περιπτώσεων χρήσης | https://github.com/ellak-monades-aristeias/NursesShift/tree/master/PE\_1 |
-| Υλοποίηση λειτουργιών                                                | https://github.com/ellak-monades-aristeias/NursesShift/tree/master/basic |
-| Ολοκλήρωση συστήματος                                                | https://github.com/ellak-monades-aristeias/NursesShift/tree/master/basic |
-| Έλεγχος – Τεκμηρίωση – Υλικό Παρουσίασης                             | https://github.com/ellak-monades-aristeias/NursesShift/tree/master/PE\_4 |
+| Ανάλυση απαιτήσεων- Σχεδιασμός βάσης - Σχεδιασμός περιπτώσεων χρήσης | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE1_DB |
+| Υλοποίηση λειτουργιών                                                | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic |
+| Ολοκλήρωση συστήματος                                                | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic |
+| Έλεγχος – Τεκμηρίωση – Υλικό Παρουσίασης                             | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE4_Manuals |
 
 > Το έργο έχει εγκριθεί για Ενίσχυση Έργων Ανοιχτού Λογισμικού από την [ΕΕΛ/ΛΑΚ](https://ellak.gr/)
