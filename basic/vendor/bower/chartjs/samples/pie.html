@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Pie Chart</title>
+		<script src="../Chart.js"></script>
+	</head>
+	<body>
+		<div id="canvas-holder">
+			<canvas id="chart-area" width="300" height="300"/>
+		</div>
+
+
+	<script>
+
+		var pieData = [
+{ value : 55442.349853515625,
+label : "March, 2012",
+color : "rgb(11, 28, 130)"}, 
+{ value : 76.68000030517578,
+label : "December, 2013",
+color : "rgb(221, 118, 156)"}, 
+{ value : 392.40000915527344,
+label : "January, 2014",
+color : "rgb(248, 113, 212)"}, 
+{ value : 4896.4000244140625,
+label : "February, 2014",
+color : "rgb(202, 77, 47)"}, 
+{ value : 22640.369285583496,
+label : "March, 2014",
+color : "rgb(222, 254, 249)"}, 
+{ value : 23341.93978881836,
+label : "April, 2014",
+color : "rgb(46, 203, 14)"}, 
+{ value : 11547.870056152344,
+label : "May, 2014",
+color : "rgb(245, 6, 84)"}, 
+{ value : 24215.759998321533,
+label : "June, 2014",
+color : "rgb(85, 185, 208)"}, 
+{ value : 15909.88003540039,
+label : "July, 2014",
+color : "rgb(176, 169, 60)"}, 
+{ value : 1908.969970703125,
+label : "August, 2014",
+color : "rgb(36, 152, 98)"}, 
+{ value : 25065.349796295166,
+label : "September, 2014",
+color : "rgb(246, 25, 67)"}, 
+{ value : 20071.410041809082,
+label : "October, 2014",
+color : "rgb(89, 224, 72)"}, 
+{ value : 36541.939598083496,
+label : "November, 2014",
+color : "rgb(105, 229, 114)"}, 
+{ value : 188290.54085731506,
+label : "December, 2014",
+color : "rgb(200, 68, 223)"}, 
+{ value : 609588.8594331741,
+label : "January, 2015",
+color : "rgb(163, 49, 137)"}, 
+{ value : 1757221.9784402847,
+label : "February, 2015",
+color : "rgb(158, 235, 157)"}, 
+{ value : 2273693.5973677635,
+label : "March, 2015",
+color : "rgb(115, 251, 67)"}, 
+{ value : 1813442.117225647,
+label : "April, 2015",
+color : "rgb(161, 183, 77)"}, 
+{ value : 964446.4097697735,
+label : "May, 2015",
+color : "rgb(35, 87, 144)"}, 
+{ value : 1232082.028182812,
+label : "June, 2015",
+color : "rgb(109, 130, 87)"}, 
+{ value : 1152080.2222545147,
+label : "July, 2015",
+color : "rgb(179, 179, 216)"}, 
+{ value : 283942.33806324005,
+label : "August, 2015",
+color : "rgb(184, 91, 246)"}, 
+{ value : 5571938.102293968,
+label : "September, 2015",
+color : "rgb(30, 18, 61)"}, 
+{ value : 1955766.4294872284,
+label : "October, 2015",
+color : "rgb(142, 203, 127)"}, 
+			];
+
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myPie = new Chart(ctx).Pie(pieData);
+			};
+
+
+
+	</script>
+	</body>
+</html>

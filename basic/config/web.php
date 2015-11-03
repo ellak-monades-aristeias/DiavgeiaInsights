@@ -7,6 +7,16 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'el',
+    'modules' => [
+    'gridview' =>  [
+            'class' => '\kartik\grid\Module',
+            // enter optional module parameters below - only if you need to  
+            // use your own export download action or custom translation 
+            // message source
+            'downloadAction' => 'gridview/export/download',
+            // 'i18n' => []
+        ]
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -31,7 +41,7 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
-        ],
+        ],        
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -71,6 +81,10 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['127.0.0.1', '::1', '192.168.0.*', '192.168.178.20'] // adjust this to your needs
+    ];
+    
+    $config['modules']['gridview'] = [
+            'class' => '\kartik\grid\Module',
     ];
 }
 
