@@ -26,6 +26,7 @@
 Τον Ιούνιο του 2014 παρουσιάστηκε η δεύτερη έκδοση, η Διαύγεια ΙΙ, που παρόλο βελτιώνει το μηχανισμό αναζήτησης, δεν παρέχει στοιχεία ανάλυσης των δεδομένων, ή εκτεταμένα κριτήρια αναζήτησης.
 
 Το κενό αυτό έχουν έρθει να καλύψουν και άλλα Project όπως η ΥπερΔι@υγεια και το PublicSpending.net, με διαφορετικές προσεγγίσεις το καθένα, αλλά πάλι τα κριτήρια αναζήτησης αποφάσεων (κυρίως δαπανών) και η εμφάνιση στοιχείων είναι περιορισμένη.
+<<<<<<< HEAD
 
 Πίνακας Παραδοτέων
 ------------------
@@ -36,3 +37,5 @@
 | Υλοποίηση λειτουργιών                                                | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic |
 | Ολοκλήρωση συστήματος                                                | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic |
 | Έλεγχος – Τεκμηρίωση – Υλικό Παρουσίασης                             | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE4_Manuals |
+=======
+>>>>>>> InitialCommit
