@@ -89,3 +89,20 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+canvas {
+            width: 100% !important;
+            max-width: 800px;
+            height: auto !important;
+}
+
+div.loading {
+    background-color: #eee;
+    background-image: url('../images/ajax-loader.gif');
+    background-position:  center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+div.loading * {
+    opacity: .8;
+}

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $sum = 0.0;
                         $counter = 1;
                         $actual_size = 1;
-
+                        $breakOrg = 0;
                     while ($actual_size != 0) {  
                         foreach ($unitData['decisions'] as $unit) {
                             try{
@@ -97,35 +97,50 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $kae = $sponsor1['expenseAmount']['kae'];
                                     
                                     if (!isset($sponsor1['cpv']))
-                                        $cpv = null;
+                                        $cpv = "-";
                                     else
                                         $cpv = $sponsor1['cpv'];
                                     
-                                    
+                                    if (!isset($sponsor1['sponsorAFMName']['afm']))
+                                        $afm = null;
+                                    else
+                                        $afm = $sponsor1['sponsorAFMName']['afm'];                                           
 
                                     if (!isset($sponsor1['sponsorAFMName']['afmType']))
                                         $afmType = null;
                                     else
                                         $afmType = $sponsor1['sponsorAFMName']['afmType']; 
+                                    
+                                    if (!isset($sponsor1['sponsorAFMName']['afmCountry']))
+                                        $afmCountry = null;
+                                    else
+                                        $afmCountry = $sponsor1['sponsorAFMName']['afmCountry']; 
 
                                     if (!isset($sponsor1['sponsorAFMName']['name']))
                                         $name = null;
                                     else
                                         $name = $sponsor1['sponsorAFMName']['name']; 
+                                    
+                                    if (!isset($sponsor1['sponsorAFMName']['noVATOrg']))
+                                        $noVATOrg = null;
+                                    else
+                                        $noVATOrg = $sponsor1['sponsorAFMName']['noVATOrg']; 
 
                                     if (!isset($sponsor1['expenseAmount']['amount']))
                                         $amount = null;
                                     else
                                         $amount = $sponsor1['expenseAmount']['amount']; 
+                                    
+                              
 
                                     Yii::$app->db->createCommand()->insert('amountwithkae', [
                                         'awk_ada' => $unit['ada'],
-                                        'afm' => $sponsor1['sponsorAFMName']['afm'],
+                                        'afm' => $afm,
                                         'afmType' => $afmType,
-                                        //'afmCountry' => $sponsor1['sponsorAFMName']['afmCountry'],
+                                        'afmCountry' => $afmCountry,
                                         'enterName' => '1',
                                         'name' => $name,
-                                        //'noVATOrg' => $sponsor1['sponsorAFMName']['noVATOrg'],
+                                        'noVATOrg' => $noVATOrg,
                                         'kae' => $kae,
                                         'amount' => $amount,
                                         //'kaeCreditRemainder' => $sponsor1['expenseAmount']['kaeCreditRemainder'],
@@ -142,7 +157,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $counter++;
                             } catch (Exception $e) {
                                 echo 'Caught exception: ',  $e->getMessage(), "\n";
-                                //break;
+                                $exc = $e->getMessage();
+                                if (strstr($exc, "1062 Duplicate entry") != FALSE){
+                                    //$breakOrg = 1;
+                                    break;
+                                }
+                                    
                             }
                         }
                         $pages++;
@@ -153,14 +173,27 @@ $this->params['breadcrumbs'][] = $this->title;
                         $actual_size = $unitData['info']['actualSize'];  
                         if ($actual_size == NULL)
                             $actualSize = 1;
-                        else if ($actual_size == 0)
+                        else if ($actual_size < 500)
                             break;
-		
+                        
+                        unset($unit);
+                        unset($orgData);
+                        unset($kae);
+                        unset($afmType);
+                        unset($cpv);
+                        unset($afmType);
+                        unset($name);
+                        unset($amount);
+                        
+                        if ($breakOrg == 1) {
+                            $actualSize = 0;
+                            break;
+                        }
+                        
                     }
                 } else {
                         echo "Error " . $response->code;
                 }      
-
             }
             
         }

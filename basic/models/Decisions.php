@@ -4,6 +4,8 @@ namespace app\models;
 
 use Yii;
 
+require_once(__DIR__ . '/../vendor/opendata/opendata.php');
+
 /**
  * This is the model class for table "decisions".
  *
