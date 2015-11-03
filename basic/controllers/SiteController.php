@@ -110,7 +110,12 @@ class SiteController extends Controller
       public function actionSearchcpv()
     {
         return $this->render('searchcpv');
-    }     
+    }   
+    
+      public function actionManual()
+    {
+        return $this->render('manual');
+    }         
     
     /*00-00*/
     public function actionAdmin_panel()
@@ -288,17 +293,19 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                                 $sponsorData = $unit['extraFieldValues']['sponsor'];
                                 //print_r($sponsorData);
                                 foreach ($sponsorData as $sponsor1) {
+                                    // Expense Amount DATA
                                     if (!isset($sponsor1['expenseAmount']['kae']))
                                         $kae = null;
                                     else
                                         $kae = $sponsor1['expenseAmount']['kae'];
                                     
-                                    if (!isset($sponsor1['cpv']))
-                                        $cpv = "-";
+                                    if (!isset($sponsor1['expenseAmount']['amount']))
+                                        $amount = null;
                                     else
-                                        $cpv = $sponsor1['cpv'];
+                                        $amount = $sponsor1['expenseAmount']['amount'];                                     
                                     
-                                    
+                             
+                                    // Sponsor DATA
 
                                     if (!isset($sponsor1['sponsorAFMName']['afmType']))
                                         $afmType = null;
@@ -310,15 +317,21 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                                     else
                                         $name = $sponsor1['sponsorAFMName']['name']; 
 
-                                    if (!isset($sponsor1['expenseAmount']['amount']))
-                                        $amount = null;
+                                    if (!isset($sponsor1['sponsorAFMName']['noVATOrg']))
+                                        $noVATOrg = null;
                                     else
-                                        $amount = $sponsor1['expenseAmount']['amount']; 
+                                        $noVATOrg = $sponsor1['sponsorAFMName']['noVATOrg']; 
                                     
-                                    if (!isset($sponsor1['expenseAmount']['afm']))
+                                    if (!isset($sponsor1['sponsorAFMName']['afm']))
                                         $afm = null;
                                     else
-                                        $afm = $sponsor1['expenseAmount']['afm']; 
+                                        $afm = $sponsor1['sponsorAFMName']['afm']; 
+                                    
+                                    // CPV DATA
+                                    if (!isset($sponsor1['cpv']))
+                                        $cpv = "-";
+                                    else
+                                        $cpv = $sponsor1['cpv'];
 
                                     Yii::$app->db->createCommand()->insert('amountwithkae', [
                                         'awk_ada' => $unit['ada'],

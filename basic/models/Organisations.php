@@ -76,15 +76,21 @@ class Organisations extends \yii\db\ActiveRecord
     
     public static function dropdown() {
             $models = static::find()->all();
+            $dropdown = array();
             foreach ($models as $model) {
                     $dropdown[$model->uid] = $model->label;
             }
-            return $dropdown;
+            if (!is_null($dropdown))
+                return $dropdown;
+            else 
+                return null;
+            
     }
     
     public static function dropdownSearch() {
             $models = static::findBySql("SELECT org.uid as uid, org.label as label FROM preferences as pr, organisations as org
 WHERE pr.pref_name LIKE 'organisationID' AND pr.pref_value=org.uid")->all();
+            $dropdown = array();
             foreach ($models as $model) {
                     $dropdown[$model->uid] = $model->label;
             }
