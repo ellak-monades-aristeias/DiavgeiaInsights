@@ -7,11 +7,10 @@ $this->title = 'DiavgeiaInsights : Μονάδες Αριστείας ΕΛ/ΛΑΚ
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>DiavgeiaInsights</h1>
+        <img width="400" src="../web/images/logo_large.png">
 
         <p class="lead">Καλώς ήρθατε στην αρχική σελίδα της εφαρμογής DiavgeiaInsights.</p>
 
-        <p><a class="btn btn-lg btn-success" href="#"></a></p>
     </div>
 
     <div class="body-content">
