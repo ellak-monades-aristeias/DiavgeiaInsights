@@ -14,7 +14,7 @@ DiavgeiaInsights
     -   SQL script για τη δημιουργία του Σχήματος : [SQL
         File](<https://github.com/ellak-monades-aristeias/NursesShift/blob/master/PE\_1/nursesshift\_schema\_20151025\_01.sql>)
 
-    -   Οπτική απεικόνιση του Σχήματος :
+    -   Οπτική απεικόνιση του Σχήματος : 
 
 ![](<https://github.com/ellak-monades-aristeias/NursesShift/blob/master/PE_1/nursesshift_schema_20151006_01.png>)
 
