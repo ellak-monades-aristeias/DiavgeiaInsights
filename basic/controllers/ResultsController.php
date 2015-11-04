@@ -129,5 +129,23 @@ class ResultsController extends Controller
         $pref->save();        
         return $this->render('resultsb21c');
     }      
+    
+    public function actionResultsb21afm()
+    {
+        if(!isset($_POST['select_orgs']) || empty($_POST['select_orgs'])) {
+           $orgID1 = Preferences::findOne (['pref_name' => 'Resultsb21borgID']);
+           $orgID = $orgID1->pref_value;
+           Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgID']);
+        }
+        else
+            $orgID = $_POST['select_orgs'];
+        Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgID']);
+        Yii::$app->view->params['Resultsb21afmorgID'] = $orgID;
+        $pref = new Preferences();
+        $pref->pref_name = 'Resultsb21afmorgID';
+        $pref->pref_value = $orgID;
+        $pref->save();
+        return $this->render('resultsb21afm');
+    }     
 
 }

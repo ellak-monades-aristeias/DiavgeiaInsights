@@ -140,6 +140,38 @@ $connection = \Yii::$app->db;
         
 
     </div>
+    <div class="row">
+        <h4> Αποφάσεις ανά ΑΦΜ για Οργανισμό </h4>
+            <?php
+            // Form 1 : Decisions per month pew organizations
+            echo Html::beginForm('index.php?r=results/resultsb21afm', 'post');
+            // 2. Show selected Organisations
+            echo '<label class="control-label">Οργανισμοί</label>';
+            echo Select2::widget([
+                'name' => 'select_orgs',
+                'data' => $currentOrgs,
+                'value' => '',
+                'options' => [
+                    'placeholder' => 'Οργανισμός...',
+                    'multiple' => false
+                ],
+            ]);
+            ?>
+                    <br>
+            <?php
+                echo Html::submitButton('Εμφάνιση')
+            ?>    
+                    <br>     
+            <?php
+            echo Html::endForm();    
+            ?>                
+            <p>
+
+            </p>              
+
+        </div>        
+        
+    </div>
     
         <p>
             <?php
