@@ -6,7 +6,8 @@ DiavgeiaInsights
 
 -   Τεκμηρίωση
 
-    -   Τελικοί Χρήστες:
+    -   [Τελικοί
+        Χρήστες](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/usermanual/user_manual.pdf>):
 
     -   Developers
 
