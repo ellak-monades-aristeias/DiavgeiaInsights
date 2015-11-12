@@ -9,7 +9,7 @@ DiavgeiaInsights
     -   [Τελικοί
         Χρήστες](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/usermanual/user_manual.pdf>):
 
-    -   Developers
+    -   [Developers](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/devmanual/dev_manual.pdf>)
 
 -   Υλικό Παρουσίασης
 
