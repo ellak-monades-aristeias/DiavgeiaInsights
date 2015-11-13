@@ -33,5 +33,6 @@ return [
     'Thank you for contacting us. We will respond to you as soon as possible.' => 'Ευχαριστούμε για την επικοινωνία. Θα σας απαντήσουμε το γρηγορότερο δυνατό.',
     'Show List' => 'Εμφάνιση Λίστας',
     'Show Calendar' => 'Εμφάνιση Ημερολογίου',
-    'Update Appointment: ' => 'Ενημέρωση Ραντεβού: '
+    'Update Appointment: ' => 'Ενημέρωση Ραντεβού: ',
+    'Abbreviation' => 'Συντόμευση'
 ];
