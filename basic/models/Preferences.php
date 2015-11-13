@@ -50,6 +50,7 @@ class Preferences extends \yii\db\ActiveRecord
             $dropdown = array();
             foreach ($models as $model) {
                 array_push($dropdown, $model['pref_value']);
+                                print_r($model);
             }
             return $dropdown;
     }
@@ -69,6 +70,7 @@ class Preferences extends \yii\db\ActiveRecord
             $dropdown = array();
             foreach ($models1 as $model) {
                 array_push($dropdown, $model['pref_value']);
+
             }
             $models2 = static::findBySql(" SELECT pref_value, pref_value FROM preferences WHERE pref_name LIKE 'end_date'")->all();
             foreach ($models2 as $model) {

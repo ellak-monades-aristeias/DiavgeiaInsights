@@ -13,6 +13,7 @@ use demogorgorn\ajax\AjaxSubmitButton;
 
 $this->title = Yii::t('app', 'Organisations');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="organisations-index">
 
