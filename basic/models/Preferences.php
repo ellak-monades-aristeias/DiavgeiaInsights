@@ -50,7 +50,6 @@ class Preferences extends \yii\db\ActiveRecord
             $dropdown = array();
             foreach ($models as $model) {
                 array_push($dropdown, $model['pref_value']);
-                                print_r($model);
             }
             return $dropdown;
     }

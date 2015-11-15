@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	$client->setAuth('apiuser_1', 'ApiUser@1');
 
         foreach ($currentOrgs as $corg) {
-            $pages = 0;
+           $pages = 0;
             foreach ($currentTypes as $ctype) {
                 $string = "/search?org=". $corg . "&type=". $ctype ."&size=500&from_date=". $currentDates[0]. "&to_date=". $currentDates[1] ."&page=". $pages;
                 //print ($string);
@@ -62,11 +62,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                   'submissionTimestamp' => gmdate("Y-m-d", $unit['submissionTimestamp']/1000),
                                   'versionId' => $unit['versionId'],
                                   'status' => $unit['status'],
-                                  'url' => $unit['url'],
+                                  'url' => $unit['documentUrl'],
                                   'documentChecksum' => $unit['documentChecksum'],
                                   'correctedVersionId' => $unit['correctedVersionId'],
                               ])->execute();
-
+                                $b21_counter++;
                                 $orgData = $unit['extraFieldValues']['org'];
                                 //foreach ($orgData as $org) {
                                     //print_r($orgData);
@@ -91,56 +91,54 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $sponsorData = $unit['extraFieldValues']['sponsor'];
                                 //print_r($sponsorData);
                                 foreach ($sponsorData as $sponsor1) {
+                                    // Expense Amount DATA
                                     if (!isset($sponsor1['expenseAmount']['kae']))
                                         $kae = null;
                                     else
                                         $kae = $sponsor1['expenseAmount']['kae'];
                                     
-                                    if (!isset($sponsor1['cpv']))
-                                        $cpv = "-";
+                                    if (!isset($sponsor1['expenseAmount']['amount']))
+                                        $amount = null;
                                     else
-                                        $cpv = $sponsor1['cpv'];
+                                        $amount = $sponsor1['expenseAmount']['amount'];                                     
                                     
-                                    if (!isset($sponsor1['sponsorAFMName']['afm']))
-                                        $afm = null;
-                                    else
-                                        $afm = $sponsor1['sponsorAFMName']['afm'];                                           
+                             
+                                    // Sponsor DATA
 
                                     if (!isset($sponsor1['sponsorAFMName']['afmType']))
                                         $afmType = null;
                                     else
                                         $afmType = $sponsor1['sponsorAFMName']['afmType']; 
-                                    
-                                    if (!isset($sponsor1['sponsorAFMName']['afmCountry']))
-                                        $afmCountry = null;
-                                    else
-                                        $afmCountry = $sponsor1['sponsorAFMName']['afmCountry']; 
 
                                     if (!isset($sponsor1['sponsorAFMName']['name']))
                                         $name = null;
                                     else
                                         $name = $sponsor1['sponsorAFMName']['name']; 
-                                    
+
                                     if (!isset($sponsor1['sponsorAFMName']['noVATOrg']))
                                         $noVATOrg = null;
                                     else
                                         $noVATOrg = $sponsor1['sponsorAFMName']['noVATOrg']; 
-
-                                    if (!isset($sponsor1['expenseAmount']['amount']))
-                                        $amount = null;
-                                    else
-                                        $amount = $sponsor1['expenseAmount']['amount']; 
                                     
-                              
+                                    if (!isset($sponsor1['sponsorAFMName']['afm']))
+                                        $afm = null;
+                                    else
+                                        $afm = $sponsor1['sponsorAFMName']['afm']; 
+                                    
+                                    // CPV DATA
+                                    if (!isset($sponsor1['cpv']))
+                                        $cpv = "-";
+                                    else
+                                        $cpv = $sponsor1['cpv'];
 
                                     Yii::$app->db->createCommand()->insert('amountwithkae', [
                                         'awk_ada' => $unit['ada'],
                                         'afm' => $afm,
                                         'afmType' => $afmType,
-                                        'afmCountry' => $afmCountry,
+                                        //'afmCountry' => $sponsor1['sponsorAFMName']['afmCountry'],
                                         'enterName' => '1',
                                         'name' => $name,
-                                        'noVATOrg' => $noVATOrg,
+                                        //'noVATOrg' => $sponsor1['sponsorAFMName']['noVATOrg'],
                                         'kae' => $kae,
                                         'amount' => $amount,
                                         //'kaeCreditRemainder' => $sponsor1['expenseAmount']['kaeCreditRemainder'],
@@ -156,12 +154,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                 $counter++;
                             } catch (Exception $e) {
-                                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                                echo 'Caught exception: ',  $e->getMessage(), "\n<br>";
                                 $exc = $e->getMessage();
-                                if (strstr($exc, "1062 Duplicate entry") != FALSE){
+                                //if (strstr($exc, "1062 Duplicate entry") != FALSE){
                                     //$breakOrg = 1;
-                                    break;
-                                }
+                                    //break;
+                                //}
                                     
                             }
                         }
@@ -173,22 +171,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         $actual_size = $unitData['info']['actualSize'];  
                         if ($actual_size == NULL)
                             $actualSize = 1;
-                        else if ($actual_size < 500)
+                        else if ($actual_size == 0)
                             break;
                         
                         unset($unit);
                         unset($orgData);
                         unset($kae);
                         unset($afmType);
-                        unset($cpv);
+                        //unset($cpv);
                         unset($afmType);
                         unset($name);
                         unset($amount);
                         
-                        if ($breakOrg == 1) {
-                            $actualSize = 0;
-                            break;
-                        }
+                        //if ($breakOrg == 1) {
+                            //$actualSize = 0;
+                           // break;
+                        //}
                         
                     }
                 } else {
@@ -201,6 +199,14 @@ $this->params['breadcrumbs'][] = $this->title;
         $mysqltime = date ("d-m-Y H:i:s");
         Yii::$app->db->createCommand("DELETE FROM preferences WHERE pref_name LIKE 'lastrefreshdate'")->execute();;
         Yii::$app->db->createCommand("INSERT INTO preferences (pref_name, pref_value) VALUES ('lastrefreshdate','".$mysqltime."')")->execute();
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return [
+            'message' => $b21_counter + ' ΑΠΟΦΑΣΕΙΣ ΤΥΠΟΥ Β.2.1 ΠΡΟΣΤΕΘΗΚΑΝ',
+            'code' => $b21_counter,
+        ];        
+            
+
 ?>
         </div>
     </div>

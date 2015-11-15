@@ -53,11 +53,11 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)
                 $rows += 1;                
             }
             
-            $label = array_slice($label, 0, 20);
-            $data = array_slice($data, 0, 20);
+            $label = array_slice($label, -20, 20);
+            $data = array_slice($data, -20, 20);
       
             $dataProvider = new SqlDataProvider([
-            'sql' => "SELECT ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2) as ΜΟ, CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as TIMEORDER, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
+            'sql' => "SELECT ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2) as ΜΟ, CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as ΣΕΙΡΑ, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
 FROM decisions as dc, decisionsb21 as db21, amountwithkae as awk, cpvperdecisions as cpd
 WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada AND cpd.cpd_ada=dc.ada AND dc.organizationId=".$org." AND cpd.cpd_cpv LIKE '".$cpv."'
 GROUP BY YEAR(dc.issueDate), MONTH(dc.issueDate)",
@@ -70,7 +70,7 @@ GROUP BY YEAR(dc.issueDate), MONTH(dc.issueDate)",
                     'ΠΟΣΟ',
                     'ΠΛΗΘΟΣ',
                     'ΜΟ',
-                    'Timeorder',
+                    'ΣΕΙΡΑ',
                     'ΜΗΝΑΣ'
                 ],
             ],

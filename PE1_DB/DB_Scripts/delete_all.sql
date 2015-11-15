@@ -1,10 +1,9 @@
-DELETE FROM `diavgeiainsights`.`amountwithkae`
-WHERE awk_ID > 1;
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM `diavgeiainsights`.`amountwithkae`;
 
 DELETE FROM `diavgeiainsights`.`cpvperdecisions`;
 
-DELETE FROM `diavgeiainsights`.`decisionsb21`
-WHERE enterName=1;
+DELETE FROM `diavgeiainsights`.`decisionsb21`;
 
 DELETE FROM `diavgeiainsights`.`decisions`;
-

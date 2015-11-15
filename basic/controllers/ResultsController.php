@@ -147,5 +147,24 @@ class ResultsController extends Controller
         $pref->save();
         return $this->render('resultsb21afm');
     }     
+    
+    public function actionCpvlist($q = null, $id = null) {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = ['results' => ['id' => '', 'text' => '']];
+        if (!is_null($q)) {
+            $query = new Query;
+            $query->select('uid as id, cpv_label AS text')
+                ->from('cpv')
+                ->where(['like', 'cpv_label', $q])
+                ->limit(20);
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+            $out['results'] = array_values($data);
+        }
+        elseif ($id > 0) {
+            $out['results'] = ['id' => $id, 'text' => City::find($id)->name];
+        }
+        return $out;
+    }    
 
 }

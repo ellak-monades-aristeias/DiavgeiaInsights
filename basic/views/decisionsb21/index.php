@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'b13_ada',
+            'b21_ada',
             'afm',
             'afmType',
             'afmCountry',

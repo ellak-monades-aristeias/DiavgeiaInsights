@@ -18,7 +18,7 @@ class Decisionsb21Search extends Decisionsb21
     public function rules()
     {
         return [
-            [['b13_ada', 'afm', 'afmType', 'afmCountry', 'decisionsB21col', 'name', 'noVATOrg', 'documentType'], 'safe'],
+            [['b21_ada', 'afm', 'afmType', 'afmCountry', 'decisionsB21col', 'name', 'noVATOrg', 'documentType'], 'safe'],
             [['enterName'], 'integer'],
         ];
     }
@@ -59,7 +59,7 @@ class Decisionsb21Search extends Decisionsb21
             'enterName' => $this->enterName,
         ]);
 
-        $query->andFilterWhere(['like', 'b13_ada', $this->b13_ada])
+        $query->andFilterWhere(['like', 'b21_ada', $this->b21_ada])
             ->andFilterWhere(['like', 'afm', $this->afm])
             ->andFilterWhere(['like', 'afmType', $this->afmType])
             ->andFilterWhere(['like', 'afmCountry', $this->afmCountry])

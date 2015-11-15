@@ -264,7 +264,7 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                                   'submissionTimestamp' => gmdate("Y-m-d", $unit['submissionTimestamp']/1000),
                                   'versionId' => $unit['versionId'],
                                   'status' => $unit['status'],
-                                  'url' => $unit['url'],
+                                  'url' => $unit['documentUrl'],
                                   'documentChecksum' => $unit['documentChecksum'],
                                   'correctedVersionId' => $unit['correctedVersionId'],
                               ])->execute();
@@ -358,10 +358,10 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                             } catch (Exception $e) {
                                 echo 'Caught exception: ',  $e->getMessage(), "\n<br>";
                                 $exc = $e->getMessage();
-                                if (strstr($exc, "1062 Duplicate entry") != FALSE){
-                                    $breakOrg = 1;
-                                    break;
-                                }
+                                //if (strstr($exc, "1062 Duplicate entry") != FALSE){
+                                    //$breakOrg = 1;
+                                    //break;
+                                //}
                                     
                             }
                         }
@@ -385,10 +385,10 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                         unset($name);
                         unset($amount);
                         
-                        if ($breakOrg == 1) {
-                            $actualSize = 0;
-                            break;
-                        }
+                        //if ($breakOrg == 1) {
+                            //$actualSize = 0;
+                           // break;
+                        //}
                         
                     }
                 } else {

@@ -35,9 +35,9 @@ class Decisionsb21 extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['b13_ada'], 'required'],
+            [['b21_ada'], 'required'],
             [['enterName'], 'integer'],
-            [['b13_ada'], 'string', 'max' => 15],
+            [['b21_ada'], 'string', 'max' => 15],
             [['afm', 'afmType', 'afmCountry', 'decisionsB21col', 'noVATOrg'], 'string', 'max' => 45],
             [['name'], 'string', 'max' => 100],
             [['documentType'], 'string', 'max' => 20]
@@ -50,7 +50,7 @@ class Decisionsb21 extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'b13_ada' => Yii::t('app', 'B13 Ada'),
+            'b21_ada' => Yii::t('app', 'B13 Ada'),
             'afm' => Yii::t('app', 'Afm'),
             'afmType' => Yii::t('app', 'Afm Type'),
             'afmCountry' => Yii::t('app', 'Afm Country'),
@@ -67,6 +67,6 @@ class Decisionsb21 extends \yii\db\ActiveRecord
      */
     public function getB13Ada()
     {
-        return $this->hasOne(Decisions::className(), ['ada' => 'b13_ada']);
+        return $this->hasOne(Decisions::className(), ['ada' => 'b21_ada']);
     }
 }
