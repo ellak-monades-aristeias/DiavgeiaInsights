@@ -302,7 +302,12 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                                     if (!isset($sponsor1['expenseAmount']['amount']))
                                         $amount = null;
                                     else
-                                        $amount = $sponsor1['expenseAmount']['amount'];                                     
+                                        $amount = $sponsor1['expenseAmount']['amount'];    
+                                    
+                                    if (!isset($sponsor1['expenseAmount']['currency']))
+                                        $currency = null;
+                                    else
+                                        $currency = $sponsor1['expenseAmount']['currency'];   
                                     
                              
                                     // Sponsor DATA
@@ -327,31 +332,43 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                                     else
                                         $afm = $sponsor1['sponsorAFMName']['afm']; 
                                     
+                                    if (!isset($sponsor1['sponsorAFMName']['afmCountry']))
+                                        $afmCountry = null;
+                                    else
+                                        $afmCountry = $sponsor1['sponsorAFMName']['afmCountry']; 
+                                    
+                                    if (!isset($sponsor1['sponsorAFMName']['noVATOrg']))
+                                        $noVATOrg = null;
+                                    else
+                                        $noVATOrg = $sponsor1['sponsorAFMName']['noVATOrg']; 
+                                    
                                     // CPV DATA
                                     if (!isset($sponsor1['cpv']))
                                         $cpv = "-";
                                     else
                                         $cpv = $sponsor1['cpv'];
 
-                                    Yii::$app->db->createCommand()->insert('amountwithkae', [
-                                        'awk_ada' => $unit['ada'],
+                                    Yii::$app->db->createCommand()->insert('sponsor', [
+                                        'sp_ada' => $unit['ada'],
                                         'afm' => $afm,
                                         'afmType' => $afmType,
-                                        //'afmCountry' => $sponsor1['sponsorAFMName']['afmCountry'],
+                                        'afmCountry' => $afmCountry,
                                         'enterName' => '1',
                                         'name' => $name,
-                                        //'noVATOrg' => $sponsor1['sponsorAFMName']['noVATOrg'],
+                                        'noVATOrg' => $noVATOrg,
                                         'kae' => $kae,
                                         'amount' => $amount,
+                                        'currency' => $currency,
+                                        'cpv' => $cpv
                                         //'kaeCreditRemainder' => $sponsor1['expenseAmount']['kaeCreditRemainder'],
                                         //'kaeBudgetRemainder' => $sponsor1['expenseAmount']['kaeBudgetRemainder'],
 
                                     ])->execute();
                                     
-                                    Yii::$app->db->createCommand()->insert('cpvperdecisions', [
+                                    /*Yii::$app->db->createCommand()->insert('cpvperdecisions', [
                                             'cpd_ada' => $unit['ada'],
                                             'cpd_cpv' => $cpv,
-                                        ])->execute();
+                                        ])->execute();*/
                                 }
 
                                 $counter++;

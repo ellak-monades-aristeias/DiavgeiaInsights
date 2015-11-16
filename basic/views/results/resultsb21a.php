@@ -33,10 +33,10 @@ $connection = \Yii::$app->db;
             <div style="width:100%">
             <?php 
             $rows = 0;
-	    $query = "SELECT ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2) as ΜΟ, CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as ΣΕΙΡΑ, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
-FROM decisions as dc, decisionsb21 as db21, amountwithkae as awk
-WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada and dc.organizationId=".$org."
- GROUP BY MONTH(dc.issueDate), YEAR(dc.issueDate)
+	    $query = "SELECT ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ, CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as ΣΕΙΡΑ, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and dc.organizationId=".$org." 
+GROUP BY MONTH(dc.issueDate), YEAR(dc.issueDate)
 ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
             $model = $connection->createCommand($query);
             $lines = $model->queryAll();
@@ -48,13 +48,14 @@ ORDER BY YEAR(dc.issueDate), MONTH(dc.issueDate)";
                 $rows += 1;                
             }
             
-            
+            $label = array_slice($label, -20, 20);
+            $data = array_slice($data, -20, 20);           
             
             $dataProvider = new SqlDataProvider([
-            'sql' => "SELECT ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2), CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as ΣΕΙΡΑ, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
-FROM decisions as dc, decisionsb21 as db21, amountwithkae as awk
-WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada and dc.organizationId=".$org." 
- GROUP BY MONTH(dc.issueDate), YEAR(dc.issueDate)",
+            'sql' => "SELECT ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ, CONCAT(YEAR(dc.issueDate),LPAD(MONTH(dc.issueDate), 2, '0')) as ΣΕΙΡΑ, CONCAT(MONTHNAME(STR_TO_DATE(MONTH(dc.issueDate), '%m')), ', ', YEAR(dc.issueDate)) as ΜΗΝΑΣ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and dc.organizationId=".$org." 
+GROUP BY MONTH(dc.issueDate), YEAR(dc.issueDate)",
             'totalCount' => $rows,
             'pagination' => [
                 'pageSize' => 10,
@@ -65,6 +66,7 @@ WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada and dc.organizationId=".$org."
                     'ΠΟΣΟ',
                     'ΠΛΗΘΟΣ',
                     'ΜΟ',
+                    'ΜΗΝΑΣ'
                 ],
             ],
         ]);

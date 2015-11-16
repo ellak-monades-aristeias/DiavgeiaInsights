@@ -180,10 +180,10 @@ $connection = \Yii::$app->db;
           
         </div>
         <div style="text-align: justify;" class="col-lg-4">
-        <h4> Αποφάσεις ανά ΑΦΜ για Οργανισμό </h4>
+        <h4> Αποφάσεις ανά ΑΦΜ για CPV και Οργανισμό </h4>
             <?php
             // Form 1 : Decisions per month pew organizations
-            echo Html::beginForm('index.php?r=results/resultsb21cpv_per_year', 'post');
+            echo Html::beginForm('index.php?r=results/resultsb21afmforcpv', 'post');
             // 2. Show selected Organisations
             echo '<label class="control-label">Οργανισμοί</label>';
             echo Select2::widget([
@@ -229,10 +229,10 @@ $connection = \Yii::$app->db;
           
         </div>
         <div style="text-align: justify;" class="col-lg-4">
-        <h4> Αποφάσεις ανά ΑΦΜ για Οργανισμό </h4>
+        <h4> Αποφάσεις για ΑΦΜ για Οργανισμό </h4>
             <?php
             // Form 1 : Decisions per month pew organizations
-            echo Html::beginForm('index.php?r=results/resultsb21afm', 'post');
+            echo Html::beginForm('index.php?r=results/resultsb21afmorg', 'post');
             // 2. Show selected Organisations
             echo '<label class="control-label">Οργανισμοί</label>';
             echo Select2::widget([
@@ -244,6 +244,7 @@ $connection = \Yii::$app->db;
                     'multiple' => false
                 ],
             ]);
+            echo Html::textInput("set_afm");
             ?>
                     <br>
             <?php

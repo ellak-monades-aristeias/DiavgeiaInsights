@@ -33,9 +33,9 @@ $connection = \Yii::$app->db;
             <div style="width:100%">
             <?php 
             $rows = 0;
-	    $query = "SELECT cpv.cpv_label as CPV, ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2) as ΜΟ
-FROM decisions as dc, decisionsb21 as db21, amountwithkae as awk, cpvperdecisions as cpd, cpv
-WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada AND cpd.cpd_ada=dc.ada AND dc.organizationId=".$org." and cpv.uid=cpd.cpd_cpv
+	    $query = "SELECT cpv.cpv_label as CPV, ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp, cpv
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and cpv.uid=sp.cpv AND dc.organizationId=".$org." 
 GROUP BY cpv.uid
 ORDER BY ΠΟΣΟ DESC 
 ";
@@ -53,9 +53,9 @@ ORDER BY ΠΟΣΟ DESC
             $data = array_slice($data, 0, 20);
       
             $dataProvider = new SqlDataProvider([
-            'sql' => "SELECT cpv.cpv_label as CPV, ROUND(SUM(awk.amount), 2) as ΠΟΣΟ, COUNT(awk.amount) as ΠΛΗΘΟΣ, ROUND(AVG(awk.amount), 2) as ΜΟ
-FROM decisions as dc, decisionsb21 as db21, amountwithkae as awk, cpvperdecisions as cpd, cpv
-WHERE dc.ada=db21.b21_ada AND awk.awk_ada=dc.ada AND cpd.cpd_ada=dc.ada AND dc.organizationId=".$org." and cpv.uid=cpd.cpd_cpv
+            'sql' => "SELECT cpv.cpv_label as CPV, ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp, cpv
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and cpv.uid=sp.cpv AND dc.organizationId=".$org." 
 GROUP BY cpv.uid",
             'totalCount' => $rows,
             'pagination' => [

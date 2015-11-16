@@ -66,7 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                   'documentChecksum' => $unit['documentChecksum'],
                                   'correctedVersionId' => $unit['correctedVersionId'],
                               ])->execute();
-                                $b21_counter++;
                                 $orgData = $unit['extraFieldValues']['org'];
                                 //foreach ($orgData as $org) {
                                     //print_r($orgData);
@@ -91,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $sponsorData = $unit['extraFieldValues']['sponsor'];
                                 //print_r($sponsorData);
                                 foreach ($sponsorData as $sponsor1) {
-                                    // Expense Amount DATA
+                            // Expense Amount DATA
                                     if (!isset($sponsor1['expenseAmount']['kae']))
                                         $kae = null;
                                     else
@@ -100,7 +99,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if (!isset($sponsor1['expenseAmount']['amount']))
                                         $amount = null;
                                     else
-                                        $amount = $sponsor1['expenseAmount']['amount'];                                     
+                                        $amount = $sponsor1['expenseAmount']['amount'];    
+                                    
+                                    if (!isset($sponsor1['expenseAmount']['currency']))
+                                        $currency = null;
+                                    else
+                                        $currency = $sponsor1['expenseAmount']['currency'];   
                                     
                              
                                     // Sponsor DATA
@@ -125,31 +129,43 @@ $this->params['breadcrumbs'][] = $this->title;
                                     else
                                         $afm = $sponsor1['sponsorAFMName']['afm']; 
                                     
+                                    if (!isset($sponsor1['sponsorAFMName']['afmCountry']))
+                                        $afmCountry = null;
+                                    else
+                                        $afmCountry = $sponsor1['sponsorAFMName']['afmCountry']; 
+                                    
+                                    if (!isset($sponsor1['sponsorAFMName']['noVATOrg']))
+                                        $noVATOrg = null;
+                                    else
+                                        $noVATOrg = $sponsor1['sponsorAFMName']['noVATOrg']; 
+                                    
                                     // CPV DATA
                                     if (!isset($sponsor1['cpv']))
                                         $cpv = "-";
                                     else
                                         $cpv = $sponsor1['cpv'];
 
-                                    Yii::$app->db->createCommand()->insert('amountwithkae', [
-                                        'awk_ada' => $unit['ada'],
+                                    Yii::$app->db->createCommand()->insert('sponsor', [
+                                        'sp_ada' => $unit['ada'],
                                         'afm' => $afm,
                                         'afmType' => $afmType,
-                                        //'afmCountry' => $sponsor1['sponsorAFMName']['afmCountry'],
+                                        'afmCountry' => $afmCountry,
                                         'enterName' => '1',
                                         'name' => $name,
-                                        //'noVATOrg' => $sponsor1['sponsorAFMName']['noVATOrg'],
+                                        'noVATOrg' => $noVATOrg,
                                         'kae' => $kae,
                                         'amount' => $amount,
+                                        'currency' => $currency,
+                                        'cpv' => $cpv
                                         //'kaeCreditRemainder' => $sponsor1['expenseAmount']['kaeCreditRemainder'],
                                         //'kaeBudgetRemainder' => $sponsor1['expenseAmount']['kaeBudgetRemainder'],
 
                                     ])->execute();
                                     
-                                    Yii::$app->db->createCommand()->insert('cpvperdecisions', [
+                                    /*Yii::$app->db->createCommand()->insert('cpvperdecisions', [
                                             'cpd_ada' => $unit['ada'],
                                             'cpd_cpv' => $cpv,
-                                        ])->execute();
+                                        ])->execute();*/
                                 }
 
                                 $counter++;
@@ -191,7 +207,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 } else {
                         echo "Error " . $response->code;
-                }      
+                }     
+                unset($response);
+                gc_collect_cycles();
             }
             
         }
@@ -199,12 +217,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $mysqltime = date ("d-m-Y H:i:s");
         Yii::$app->db->createCommand("DELETE FROM preferences WHERE pref_name LIKE 'lastrefreshdate'")->execute();;
         Yii::$app->db->createCommand("INSERT INTO preferences (pref_name, pref_value) VALUES ('lastrefreshdate','".$mysqltime."')")->execute();
-
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return [
-            'message' => $b21_counter + ' ΑΠΟΦΑΣΕΙΣ ΤΥΠΟΥ Β.2.1 ΠΡΟΣΤΕΘΗΚΑΝ',
-            'code' => $b21_counter,
-        ];        
+   
             
 
 ?>

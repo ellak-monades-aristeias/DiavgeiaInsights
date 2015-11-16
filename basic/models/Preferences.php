@@ -49,7 +49,7 @@ class Preferences extends \yii\db\ActiveRecord
             $models = static::findBySql(" SELECT pref_value FROM preferences WHERE pref_name LIKE 'organisationID'")->all();
             $dropdown = array();
             foreach ($models as $model) {
-                array_push($dropdown, $model['pref_value']);
+                array_push($dropdown, $model['pref_value']);    
             }
             return $dropdown;
     }

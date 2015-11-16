@@ -146,7 +146,71 @@ class ResultsController extends Controller
         $pref->pref_value = $orgID;
         $pref->save();
         return $this->render('resultsb21afm');
-    }     
+    }    
+    
+    public function actionResultsb21afmforcpv()
+    {
+        if(!isset($_POST['select_orgs']) || empty($_POST['select_orgs'])) {
+           $orgID1 = Preferences::findOne (['pref_name' => 'Resultsb21afmforcpvID']);
+           $orgID = $orgID1->pref_value;
+           Preferences::deleteAll(['pref_name' => 'Resultsb21afmforcpvID']);
+        }
+        else
+            $orgID = $_POST['select_orgs'];
+        if(!isset($_POST['select_cpv']) || empty($_POST['select_cpv'])) {
+           $cpv1 = Preferences::findOne (['pref_name' => 'Resultsb21afmforcpvcpv']);
+           $cpv = $cpv1->pref_value;
+           Preferences::deleteAll(['pref_name' => 'Resultsb21afmforcpvcpv']);
+        }
+        else
+            $cpv = $_POST['select_cpv'];        
+        Preferences::deleteAll(['pref_name' => 'Resultsb21afmforcpvID']);
+        Yii::$app->view->params['Resultsb21afmforcpvID'] = $orgID;
+        $pref = new Preferences();
+        $pref->pref_name = 'Resultsb21afmforcpvID';
+        $pref->pref_value = $orgID;
+        $pref->save();
+        
+        Preferences::deleteAll(['pref_name' => 'Resultsb21afmforcpvcpv']);
+        Yii::$app->view->params['Resultsb21afmforcpvcpv'] = $cpv;
+        $pref = new Preferences();
+        $pref->pref_name = 'Resultsb21afmforcpvcpv';
+        $pref->pref_value = $cpv;
+        $pref->save();        
+        return $this->render('resultsb21afmforcpv');
+    }   
+    
+     public function actionResultsb21afmorg()
+    {
+        if(!isset($_POST['select_orgs']) || empty($_POST['select_orgs'])) {
+           $orgID1 = Preferences::findOne (['pref_name' => 'Resultsb21afmorgID']);
+           $orgID = $orgID1->pref_value;
+           Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgID']);
+        }
+        else
+            $orgID = $_POST['select_orgs'];
+        if(!isset($_POST['set_afm']) || empty($_POST['set_afm'])) {
+           $afm1 = Preferences::findOne (['pref_name' => 'Resultsb21afmorgcpv']);
+           $afm = $afm1->pref_value;
+           Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgcpv']);
+        }
+        else
+            $afm = $_POST['set_afm'];        
+        Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgID']);
+        Yii::$app->view->params['Resultsb21afmorgID'] = $orgID;
+        $pref = new Preferences();
+        $pref->pref_name = 'Resultsb21afmorgID';
+        $pref->pref_value = $orgID;
+        $pref->save();
+        
+        Preferences::deleteAll(['pref_name' => 'Resultsb21afmorgcpv']);
+        Yii::$app->view->params['Resultsb21afmorgcpv'] = $afm;
+        $pref = new Preferences();
+        $pref->pref_name = 'Resultsb21afmorgcpv';
+        $pref->pref_value = $afm;
+        $pref->save();        
+        return $this->render('resultsb21afmorg');
+    }
     
     public function actionCpvlist($q = null, $id = null) {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

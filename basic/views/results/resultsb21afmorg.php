@@ -17,11 +17,13 @@ use yii\db\Query;
 
 $org = $this->params['Resultsb21afmorgID'];
 Yii::$app->view->params['Resultsb21afmorgID'] = $org;
+$afm = $this->params['Resultsb21afmorgcpv'];
+Yii::$app->view->params['Resultsb21afmorgcpv'] = $afm;
 //Yii::$app->view->params['orgID'] = $org;
 //$org = 99206915;
 
 
-$this->title = 'Αποφάσεις ανά ΑΦΜ για Οργανισμό';
+$this->title = 'Αποφάσεις για ΑΦΜ σε Οργανισμό';
 $this->params['breadcrumbs'][] = $this->title;
 $connection = \Yii::$app->db;
 
@@ -34,11 +36,10 @@ $connection = \Yii::$app->db;
             <div style="width:100%">
             <?php 
             $rows = 0;
-	    $query = "SELECT sp.afm as ΑΦΜ, sp.name as ΕΠΩΝΥΜΙΑ, ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ
-FROM decisions as dc, decisionsb21 as db21, sponsor as sp
-WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and dc.organizationId=".$org."  
-GROUP BY sp.afm
-ORDER BY ΠΟΣΟ DESC 
+	    $query = "SELECT dc.ada as ΑΔΑ, dc.subject as ΘΕΜΑ, cpv.cpv_label as CPV, ROUND(sp.amount, 2) as ΠΟΣΟ, dc.issueDate as ΗΜΕΡΟΜΗΝΙΑ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp, cpv
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada AND cpv.uid=sp.cpv AND dc.organizationId=".$org." AND sp.afm LIKE '".$afm."' 
+ORDER BY ΗΜΕΡΟΜΗΝΙΑ
 ";
             
             $model = $connection->createCommand($query);
@@ -46,7 +47,7 @@ ORDER BY ΠΟΣΟ DESC
             $label = array();
             $data = array();
             foreach ($lines as $line) {
-                $label[] = $line['ΑΦΜ'];
+                $label[] = $line['ΗΜΕΡΟΜΗΝΙΑ'];
                 $data[] = $line['ΠΟΣΟ'];
                 $rows += 1;                
             }
@@ -55,30 +56,29 @@ ORDER BY ΠΟΣΟ DESC
             $data = array_slice($data, 0, 20);
       
             $dataProvider = new SqlDataProvider([
-            'sql' => "SELECT sp.afm as ΑΦΜ, sp.name as ΕΠΩΝΥΜΙΑ, ROUND(SUM(sp.amount), 2) as ΠΟΣΟ, COUNT(sp.amount) as ΠΛΗΘΟΣ, ROUND(AVG(sp.amount), 2) as ΜΟ
-FROM decisions as dc, decisionsb21 as db21, sponsor as sp
-WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada and dc.organizationId=".$org."  
-GROUP BY sp.afm
+            'sql' => "SELECT dc.ada as ΑΔΑ, dc.subject as ΘΕΜΑ, cpv.cpv_label as CPV, ROUND(sp.amount, 2) as ΠΟΣΟ, dc.issueDate as ΗΜΕΡΟΜΗΝΙΑ
+FROM decisions as dc, decisionsb21 as db21, sponsor as sp, cpv
+WHERE dc.ada=db21.b21_ada AND sp.sp_ada=dc.ada AND cpv.uid=sp.cpv AND dc.organizationId=".$org." AND sp.afm LIKE '".$afm."' 
 ",
             'totalCount' => $rows,
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
             'sort' => [
                 'attributes' => [
-                    'ΑΦΜ',
-                    'ΕΠΩΝΥΜΙΑ',
                     'ΠΟΣΟ',
-                    'ΠΛΗΘΟΣ',
-                    'ΜΟ',
+                    'ΑΔΑ',                    
+                    'CPV',
+                    'ΗΜΕΡΟΜΗΝΙΑ',
+                    'ΘΕΜΑ'
                 ],
             ],
         ]);
-            //$searchModel = app\models\Decisionsb21::findAll();
+            //$searchModel = app\models\OrganisationsSearch::findAll();
 
             ?>
             <?= ChartJs::widget([
-                'type' => 'Bar',
+                'type' => 'Line',
                 'options' => [
                    // 'width' => '600px',
                    //'height' => '600px',
@@ -113,7 +113,7 @@ GROUP BY sp.afm
                 'showPageSummary'=>true,
                 'panel'=>[
                         'type'=>'primary',
-                        'heading'=>'ΠΟΣΑ ΑΝΑ ΑΦΜ ΓΙΑ ΟΡΓΑΝΙΣΜΟ '.$org
+                        'heading'=>'ΑΠΟΦΑΣΕΙΣ/ΠΟΣΑ ΓΙΑ ΤΟ ΑΦΜ : '.$afm
                     ]                    
                 ]); ?>                
             </div>
