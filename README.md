@@ -70,21 +70,18 @@ Diavgeia Insights
 Πίνακας Παραδοτέων
 ------------------
 
-\| **Παραδοτέο** \| **URL** \|
-\|----------------------------------------------------------------------\|--------------------------------------------------------------------------\|
-\| Ανάλυση απαιτήσεων- Σχεδιασμός βάσης - Σχεδιασμός περιπτώσεων χρήσης \|
-https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE1\_DB
-\| \| Υλοποίηση λειτουργιών \|
-https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic \|
-\| Ολοκλήρωση συστήματος \|
-https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic \|
-\| Έλεγχος – Τεκμηρίωση – Υλικό Παρουσίασης \|
-https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE4\_Manuals
-\|
+| **Παραδοτέο**                                                       | **URL**                                                                              |
+|---------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Ανάλυση απαιτήσεων- Σχεδιασμός βάσης - Σχεδιασμός περιπτώσεων χρήση | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE1\_DB      |
+| Υλοποίηση λειτουργιών                                               | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic        |
+| Ολοκλήρωση συστήματος                                               | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/basic        |
+| Έλεγχος – Τεκμηρίωση – Υλικό Παρουσίασης                            | https://github.com/ellak-monades-aristeias/DiavgeiaInsights/tree/master/PE4\_Manuals |
+
+ 
 
 ### Οδηγίες Χρήσης
 
-    -   [Τελικοί
-        Χρήστες](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/usermanual/user_manual.pdf>):
+[Τελικοί
+Χρήστες](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/usermanual/user_manual.pdf>)
 
-    -   [Developers]
+[Developers](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/devmanual/dev_manual.pdf>)
