@@ -87,3 +87,9 @@ Diavgeia Insights
 Χρήστες](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/usermanual/user_manual.pdf>)
 
 [Developers](<https://github.com/ellak-monades-aristeias/DiavgeiaInsights/blob/master/PE4_Manuals/devmanual/dev_manual.pdf>)
+
+Project Description
+---------------
+DiavgeiaInsights' goal is to provide a more comprehensive tool to monitor public spending in a more personalised way, without any programming knowledge
+It's addressed to citizens, contractors and the organizations themselves. 
+The project was implemented under the FOSS Unit Of Excellence of Ioannina.
