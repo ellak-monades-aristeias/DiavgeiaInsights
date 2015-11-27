@@ -181,10 +181,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                         $pages++;
                         $string = "/search?org=". $corg . "&type=". $ctype ."&size=500&from_date=". $currentDates[0]. "&to_date=". $currentDates[1] ."&page=". $pages;
+                        echo "$string <br>";
                         $response = $client->getResource($string);
                         $unitData = $response->data;
                         //echo "---" . $unitData['info']['actualSize'];
                         $actual_size = $unitData['info']['actualSize'];  
+                        echo "ACTUAL SIZE : " . $actual_size;
                         if ($actual_size == NULL)
                             $actualSize = 1;
                         else if ($actual_size == 0)
